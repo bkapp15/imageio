@@ -3,11 +3,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev-debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "formidable": "^3.2.1",
+    "fs": "^0.0.1-security",
     "next": "12.0.8",
     "react": "17.0.2",
     "react-dom": "17.0.2"
