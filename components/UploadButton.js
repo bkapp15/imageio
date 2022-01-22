@@ -30,7 +30,7 @@ const UploadButton = ({setError}) => {
     <section>
       <button onClick={() => setDialogOpen(true)}>Upload</button>
       <dialog open={dialogOpen}>
-        <input type="file" name="file" ref={fileInputRef}/>
+        <input type="file" name="file" ref={fileInputRef} accept="image/png, image/gif, image/jpeg"/>
         <button type="submit" onClick={handleFileSubmit}>Submit</button>
       </dialog>
     </section>

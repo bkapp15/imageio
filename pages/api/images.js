@@ -29,17 +29,30 @@ const getAllImageFilenames = () => {
   return fs.readdirSync(imgRelDirPath());
 };
 
+const searchFilesByString = (searchStr) => {
+  const searchStrLowercase = searchStr.toLowerCase();
+  const allFileNames = getAllImageFilenames();
+  return allFileNames.filter(fileName => {
+    if (fileName.toLowerCase().includes(searchStrLowercase)) {
+      return fileName;
+    }
+  })
+};
+
 const handleGetImages = (req, res) => {
-  const imageFileNames = getAllImageFilenames();
-  console.log('imageFileNames: ', imageFileNames);
-  res.status(200).json({images: imageFileNames});
+  // console.log(req);
+  console.log('query params: ', req.query);
+  const {search} = req.query; // Comes already decoded
+  const matchedFileNames = searchFilesByString(search);
+  // const imageFileNames = getAllImageFilenames();
+  console.log('matchedFileNames: ', matchedFileNames);
+  res.status(200).json({images: matchedFileNames});
 };
 
 const handlePostUpload = (req, res) => {
   console.log(req);
   const form = formidable({ multiples: true });
-  //
-  // let uploadFiles = [];
+
   form.parse(req, (err, fields, files) => {
     if (err) {
       res.status(500).json({message: 'Internal error with form parsing'});
@@ -57,7 +70,8 @@ const handlePostUpload = (req, res) => {
       res.status(500).json({message: 'Error with file exists function'});
     }
     writeFileToPublicImgDir(file);
-    res.status(201);
+    console.log('finished');
+    res.status(201).end();
   });
 };
 
