@@ -1,9 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import React, {useEffect, useState} from "react";
+// import '../styles/Home.css';
+import Head from 'next/head'
 import ImageGrid from "../components/ImageGrid";
-import axios from "axios";
 import UploadButton from "../components/UploadButton";
 import SearchInput from "../components/SearchInput";
 import axiosClient from "../utils/axiosClient";
@@ -30,16 +28,28 @@ export default function Home() {
       return '';
     }
     return (
-      <p>{error}</p>
+      <section className="row">
+        <p>{error}</p>
+      </section>
     )
   };
 
   return (
-    <section>
+    <main className="imageio-container">
+      <Head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css" type="text/css" />
+      </Head>
       {renderError()}
-      <SearchInput setSearchStr={setSearchStr} />
-      <UploadButton setError={setError}/>
+      <section className="row">
+        <div className="col-xs-12">
+          <SearchInput setSearchStr={setSearchStr} />
+        </div>
+        <div className="col-xs-12">
+          <UploadButton setError={setError}/>
+        </div>
+      </section>
+
       <ImageGrid images={images} />
-    </section>
+    </main>
   )
 }
