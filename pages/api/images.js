@@ -1,5 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import {formidable} from "formidable";
 import * as fs from 'fs';
 import {imgRelDirPath} from "../../utils/constants";
@@ -41,11 +39,9 @@ const searchFilesByString = (searchStr) => {
 };
 
 const handleGetImages = (req, res) => {
-  // console.log(req);
   console.log('query params: ', req.query);
   const {search} = req.query; // Comes already decoded
   const matchedFileNames = searchFilesByString(search);
-  // const imageFileNames = getAllImageFilenames();
   console.log('matchedFileNames: ', matchedFileNames);
   res.status(200).json({images: matchedFileNames});
 };

@@ -6,7 +6,8 @@
     "dev-debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rm -rf .next && rm "
   },
   "dependencies": {
     "axios": "^0.25.0",

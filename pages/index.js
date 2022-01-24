@@ -23,9 +23,12 @@ export default function Home() {
   };
 
   const handleImageSearch = async () => {
-    const response = await axiosClient.get(`/api/images?search=${encodeURIComponent(searchStr)}`);
-    console.log('response.data: ', response.data);
-    setImages(response.data.images);
+    axiosClient.get(`/api/images?search=${encodeURIComponent(searchStr)}`).then(res => {
+        setImages(res.data.images);
+      }).catch(err => {
+        handleError(err?.response?.data?.message || 'Error in search');
+    });
+
   };
 
   const renderError = () => {

@@ -1,6 +1,5 @@
 import React from 'react';
-import Image from 'next/image'
-import {imgUrl} from "../utils/constants";
+import ImageItem from "./ImageItem";
 
 const ImageGrid = ({images}) => {
   return(
@@ -8,13 +7,7 @@ const ImageGrid = ({images}) => {
       {
         images.map((image, i) => {
           return (
-            <div className="col-xs-12 col-sm-4">
-              <div className="row center-xs">
-                <div className="col-xs-12">
-                  <img key={i} src={generateSrc(image)} width={200} height={200} className="image"/>
-                </div>
-              </div>
-            </div>
+            <ImageItem key={i} image={image} />
           )
         })
       }
@@ -23,9 +16,3 @@ const ImageGrid = ({images}) => {
 };
 
 export default ImageGrid;
-
-const generateSrc = (filename) => {
-  const src = imgUrl + encodeURIComponent(filename);
-  console.log('image source', src);
-  return src;
-};

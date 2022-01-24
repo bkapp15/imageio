@@ -19,10 +19,8 @@ const UploadButton = ({setError}) => {
     }).then(() => {
       window.location.reload();
     }).catch(err => {
-      setError(err.response.data.message)
+      setError(err.response?.data?.message || 'Error in file submit')
     });
-
-
   };
 
 

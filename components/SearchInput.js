@@ -9,6 +9,11 @@ const SearchInput = ({setSearchStr}) => {
     setSearchStr(inputVal);
   };
 
+  const clearSearch = () => {
+    searchInputRef.current.value = '';
+    setSearchStr('');
+  };
+
   const checkAndHandleEnter = (e) => {
     console.log(e);
     if (e.keyCode === 13) {
@@ -18,12 +23,18 @@ const SearchInput = ({setSearchStr}) => {
 
   return (
     <div className="row start-xs search">
-      {/*<label>Search for an image: </label>*/}
-      <div className="col-xs-8">
+      <div className="col-xs-6">
         <input type="text" name="search" ref={searchInputRef} onKeyUp={checkAndHandleEnter} />
       </div>
-      <div className="col-xs-4">
-        <button onClick={handleSearch} className="btn-main">Search</button>
+      <div className="col-xs-6">
+        <div className="row between-xs">
+          <div className="col-xs-6">
+            <button onClick={handleSearch} className="btn-main">Search</button>
+          </div>
+          <div className="col-xs-6">
+            <button onClick={clearSearch} className="btn-main">Clear</button>
+          </div>
+        </div>
       </div>
     </div>
   )
