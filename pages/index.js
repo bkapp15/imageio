@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-// import '../styles/Home.css';
 import Head from 'next/head'
 import ImageGrid from "../components/ImageGrid";
 import UploadButton from "../components/UploadButton";
