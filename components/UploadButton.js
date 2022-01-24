@@ -27,13 +27,13 @@ const UploadButton = ({setError}) => {
   return (
     <section>
       <button onClick={() => setDialogOpen(true)} className="btn-main">Upload</button>
-      <dialog open={dialogOpen}>
+      <dialog open={dialogOpen} style={{zIndex: 2}}>
         <div className="row upload-input">
-        <input type="file" name="file" ref={fileInputRef} accept="image/png, image/gif, image/jpeg"/>
+          <input type="file" name="file" ref={fileInputRef} accept="image/png, image/gif, image/jpeg"/>
         </div>
         <div className="row between-xs">
-        <button onClick={() => setDialogOpen(false)} style={{marginRight: '1rem'}}>Cancel</button>
-        <button type="submit" onClick={handleFileSubmit}>Submit</button>
+          <button onClick={() => setDialogOpen(false)} style={{marginRight: '1rem'}}>Cancel</button>
+          <button type="submit" onClick={handleFileSubmit}>Submit</button>
         </div>
       </dialog>
     </section>

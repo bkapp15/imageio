@@ -9,6 +9,7 @@ npm run dev
 # or
 yarn dev
 ```
+Node version used in development: v16.13.2
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
