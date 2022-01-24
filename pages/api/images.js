@@ -32,6 +32,7 @@ const getAllImageFilenames = () => {
 const searchFilesByString = (searchStr) => {
   const searchStrLowercase = searchStr.toLowerCase();
   const allFileNames = getAllImageFilenames();
+  allFileNames.splice(allFileNames.indexOf('.gitignore'), 1);
   return allFileNames.filter(fileName => {
     if (fileName.toLowerCase().includes(searchStrLowercase)) {
       return fileName;
