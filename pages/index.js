@@ -15,8 +15,14 @@ export default function Home() {
     handleImageSearch();
   }, [searchStr]);
 
+  const handleError = (msg) => {
+    setError(msg);
+    setTimeout(() => {
+      setError('');
+    }, 5000);
+  };
+
   const handleImageSearch = async () => {
-    // const response = await axios.get(`http://localhost:3000/api/images?`);
     const response = await axiosClient.get(`/api/images?search=${encodeURIComponent(searchStr)}`);
     console.log('response.data: ', response.data);
     setImages(response.data.images);
@@ -28,7 +34,7 @@ export default function Home() {
     }
     return (
       <section className="row">
-        <p>{error}</p>
+        <p className="error-text col-xs">{error}</p>
       </section>
     )
   };
@@ -38,16 +44,15 @@ export default function Home() {
       <Head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css" type="text/css" />
       </Head>
-      {renderError()}
-      <section className="row">
-        <div className="col-xs-12">
+      <section className="row start-xs center-sm between-sm">
+        <div className="col-xs-12 col-sm-8">
           <SearchInput setSearchStr={setSearchStr} />
         </div>
-        <div className="col-xs-12">
-          <UploadButton setError={setError}/>
+        <div className="col-xs-12 col-sm-4">
+          <UploadButton setError={handleError}/>
         </div>
       </section>
-
+      {renderError()}
       <ImageGrid images={images} />
     </main>
   )

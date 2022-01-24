@@ -1,6 +1,17 @@
+//xs = 0-767 pixels
+//sm = 768-991 pixels
+//md = 992-1199 pixels
+//lg = 1200 pixels and up
+
+$screen-xs: 767px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
 html,
 body {
   padding: 0;
+  background-color: #eee;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -15,7 +26,40 @@ a {
   box-sizing: border-box;
 }
 
-
 .imageio-container {
   padding: 2rem;
+
+  .error-text {
+    color: #d43e31;
+  }
+
+  .btn-main {
+    width: 100%;
+    background-color: #fff;
+  }
+
+  .search {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    input {
+      width: 100%;
+    }
+
+    @media screen and (min-width: $screen-sm) {
+      margin-bottom: unset;
+    }
+  }
+
+  .upload-input {
+    margin-bottom: 1rem;
+  }
+
+  .image-grid {
+    margin-top: 1rem;
+  }
+
+  .image {
+    margin: 0.5rem;
+  }
 }

@@ -17,11 +17,15 @@ const SearchInput = ({setSearchStr}) => {
   };
 
   return (
-    <>
-      <label>Search for an image: </label>
-      <input type="text" name="search" ref={searchInputRef} onKeyUp={checkAndHandleEnter}/>
-      <button onClick={handleSearch} >Search</button>
-    </>
+    <div className="row start-xs search">
+      {/*<label>Search for an image: </label>*/}
+      <div className="col-xs-8">
+        <input type="text" name="search" ref={searchInputRef} onKeyUp={checkAndHandleEnter} />
+      </div>
+      <div className="col-xs-4">
+        <button onClick={handleSearch} className="btn-main">Search</button>
+      </div>
+    </div>
   )
 };
 

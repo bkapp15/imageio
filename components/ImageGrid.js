@@ -4,10 +4,18 @@ import {imgUrl} from "../utils/constants";
 
 const ImageGrid = ({images}) => {
   return(
-    <section>
+    <section className="image-grid row">
       {
         images.map((image, i) => {
-          return <img key={i} src={generateSrc(image)} width={200} height={200}/>
+          return (
+            <div className="col-xs-12 col-sm-4">
+              <div className="row center-xs">
+                <div className="col-xs-12">
+                  <img key={i} src={generateSrc(image)} width={200} height={200} className="image"/>
+                </div>
+              </div>
+            </div>
+          )
         })
       }
     </section>
